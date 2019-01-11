@@ -61,31 +61,6 @@
 
   <script>
     window.onload = function () {
-      // check device
-      if (navigator.userAgent.indexOf('Mobile') > -1) {
-        // remove text for mouse if phone is used
-        document.getElementById('forMobile').textContent = '';
-
-        const buttonsNL = document.querySelectorAll("div[data-key]");
-        buttonsNL.forEach(button => {
-          button.addEventListener("touchend", resizeElement);
-          button.addEventListener("touchstart", playSound);
-        })
-      } else {
-        // play sounds on keyboard key press
-        window.addEventListener("keydown", e => {
-          const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-          const element = document.querySelector(`div[data-key="${e.keyCode}"]`);
-
-          if (!audio) return;
-
-          element.id = "scale";
-          audio.currentTime = 0; // restart sound on every click
-          audio.play();
-          setTimeout(() => (element.id = ""), 100);
-        });
-      }
-
       /* play sonunds on mouse click
       !!! addEventListeners only on 1 element at a time */
       let mainDiv = document.getElementById("wrapper");
@@ -122,6 +97,32 @@
       function resetId(e, eventHandler, funcName) {
         return (e.target.id =
           "" && e.target.removeEventListener(eventHandler, funcName));
+      }
+
+      // check device
+      if (navigator.userAgent.indexOf('Mobile') > -1) {
+        alert('mobile');
+        // remove text for mouse if phone is used
+        document.getElementById('forMobile').textContent = '';
+
+        const buttonsNL = document.querySelectorAll("div[data-key]");
+        buttonsNL.forEach(button => {
+          button.addEventListener("touchend", resizeElement);
+          button.addEventListener("touchstart", playSound);
+        })
+      } else {
+        // play sounds on keyboard key press
+        window.addEventListener("keydown", e => {
+          const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+          const element = document.querySelector(`div[data-key="${e.keyCode}"]`);
+
+          if (!audio) return;
+
+          element.id = "scale";
+          audio.currentTime = 0; // restart sound on every click
+          audio.play();
+          setTimeout(() => (element.id = ""), 100);
+        });
       }
     }
   </script>
