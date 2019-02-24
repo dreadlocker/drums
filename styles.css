@@ -1,0 +1,94 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+h1 {
+  text-align: center;
+}
+
+#wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 4vw;
+  padding-top: 0.3em;
+  width: 47%;
+  margin: auto;
+
+  /*double click won't mark the text*/
+  -webkit-user-select: none;
+  /* webkit (safari, chrome) browsers */
+  -moz-user-select: none;
+  /* mozilla browsers */
+  -khtml-user-select: none;
+  /* webkit (konqueror) browsers */
+  -ms-user-select: none;
+  /* IE10+ */
+  user-select: none;
+  /* Standard syntax */
+}
+
+div[data-key] {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  background-color: #bada55;
+  width: 3em;
+  height: 3em;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.info {
+  font-size: 1.4vw;
+  color: #ffff40;
+  pointer-events: none;
+}
+
+#scale {
+  transform: scale(1.1);
+  border-color: red;
+  box-shadow: 0 0 10px red;
+}
+
+@media only screen and (max-width: 1024px) {
+  #wrapper {
+    width: 95%;
+    font-size: 10vw;
+    justify-content: center;
+  }
+
+  div[data-key] {
+    width: 32%;
+    height: 2em;
+  }
+
+  .info {
+    font-size: 5vw;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+  #wrapper {
+    font-size: 5vw;
+  }
+
+  div[data-key] {
+    height: 2em;
+  }
+
+  .info {
+    font-size: 3vw;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  h1 {
+    font-size: 6vw;
+  }
+}
